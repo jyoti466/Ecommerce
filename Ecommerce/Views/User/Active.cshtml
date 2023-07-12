@@ -1,0 +1,86 @@
+﻿@model ApplicationUser
+@{
+    ViewBag.Title = "Edit User";
+}
+
+<br />
+<h2 class=" text-info">Edit User </h2>
+<form enctype="multipart/form-data" id="user-form" method="post" asp-action="Active">
+    <div class=" p-4 rounded border">
+        <div asp-validation-summary="All" class="text-bg-danger">
+        </div>
+
+        <input type="hidden" asp-for="Id" value="@Model.Id" />
+        <h3>@ViewBag.message </h3>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="UserName"> </label>
+            </div>
+            <div class="col-5">
+                <input asp-for="UserName" class="form-control" readonly="readonly" />
+            </div>
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+        <br />
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="FirstName"> </label>
+            </div>
+            <div class="col-5">
+                <input asp-for="FirstName" class="form-control" readonly="readonly" />
+            </div>
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+        <br />
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="LastName"> </label>
+            </div>
+            <div class="col-5">
+                <input asp-for="LastName" class="form-control" readonly="readonly" />
+            </div>
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+        <br />
+
+
+        <div>
+            <input type="submit" class="btn btn-primary" value="Active" />
+           
+            <a asp-action="Index" class="btn btn-success" style="width:auto">Back To List</a>
+        </div>
+    </div>
+
+
+
+</form>
+
+
+
+@section Scripts
+    {
+
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/jquery-validate/jquery.validate.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#user-form").validate({
+                rules: {
+                    UserName: {
+                        required: true,
+                    },
+                    PasswordHash: {
+                        required: true,
+                    }
+                },
+                messages: {
+                    UserName: "Enter Your Email",
+                    PasswordHash: "Enter Your Password"
+                }
+            });
+        });
+    </script>
+}

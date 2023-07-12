@@ -1,0 +1,7 @@
+﻿Build started...
+1>------ Build started: Project: Ecommerce, Configuration: Debug Any CPU ------
+1>Skipping analyzers to speed up the build. You can execute 'Build' or 'Rebuild' command to run analyzers.
+1>Ecommerce -> C:\PRACTICE\Ecommerce\Ecommerce\bin\Debug\netcoreapp3.1\Ecommerce.dll
+1>Ecommerce -> C:\PRACTICE\Ecommerce\Ecommerce\bin\Debug\netcoreapp3.1\Ecommerce.Views.dll
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
+========== Build started at 6:19 PM and took 04.680 seconds ==========

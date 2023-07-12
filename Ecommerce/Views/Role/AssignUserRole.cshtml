@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = " User Role";
+}
+<br />
+<br />
+
+
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info"> Assign User Role</h2>
+    </div>
+   @* <div class="col-6" style="text-align:right">
+        <a asp-action="create"
+           class="btn btn-info" style="width:auto ">
+            <i class="fa-solid fa-plus"></i>&nbsp;New Role
+        </a>
+    </div>*@
+</div>
+<br />
+<div>
+    <table class="table table-striped border">
+        <tr class="table-info">
+            <th>
+               User Name
+            </th>
+            <th>Role Name</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (var item in ViewBag.UserRoles)
+        {
+            <tr>
+                <td>
+                    @item.UserName
+                </td>
+                <td>@item.RoleName</td>
+                <td></td>
+                <td></td>
+
+               @* <td>
+                    <partial name="RoleButton" model="@item.Id" />
+                </td>*@
+            </tr>
+        }
+    </table>
+
+</div>
+
+
+@section Scripts {
+
+    <script src="~/lib/alertifyjs/alertify.min.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            var save = '@TempData["save"]'
+            if (save != null) {
+                alertify.success(save);
+            }
+
+            var edit = '@TempData["edit"]'
+            if (edit != null) {
+                alertify.success(edit);
+            }
+
+            var del = '@TempData["del"]'
+            if (del != null) {
+                alertify.success(del);
+            }
+        })
+    </script>
+    }
+

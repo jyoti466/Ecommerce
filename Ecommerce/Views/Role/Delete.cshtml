@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "Delete";
+}
+
+<br />
+<h2 class=" text-info">Delete Role </h2>
+<form enctype="multipart/form-data" id="role-form" method="post" asp-action="Delete">
+    <div class=" p-4 rounded border">
+        <div asp-validation-summary="All" class="text-bg-danger">
+        </div>
+        <h3>Do you want to delete ? </h3>
+        <br />
+        <div class="form-group row">
+            <div class="col-2">
+                <label> Role Nmae </label>
+            </div>
+            <input type="hidden" value="@ViewBag.id" name="id" />
+            <div class="col-5">
+                <input id="name" name="name" readonly="readonly" value="@ViewBag.name" required="required" class="form-control" />
+            </div>
+        </div>
+        <br />
+        <div>
+            <input type="submit" class="btn btn-primary" value="Delete" />
+            <a asp-action="Index" class="btn btn-success" style="width:auto">Back To List</a>
+        </div>
+    </div>
+
+</form>
+
+
+
+@section Scripts
+    {
+
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/jquery-validate/jquery.validate.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#user-form").validate({
+                rules: {
+                    UserName: {
+                        required: true,
+                    },
+                    PasswordHash: {
+                        required: true,
+                    }
+                },
+                messages: {
+                    UserName: "Enter Your Email",
+                    PasswordHash: "Enter Your Password"
+                }
+            });
+        });
+    </script>
+}

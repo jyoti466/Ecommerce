@@ -1,0 +1,68 @@
+﻿@model SpecialTag
+
+@{
+    ViewBag.Title = "Create";
+}
+<br />
+<br />
+<h2 class=" text-info"> Create SpecialTag Name </h2>
+<form method="post" asp-action="Create">
+    <div class=" p-4 rounded border">
+        <div asp-validation-summary="All" class="text-bg-danger">
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Name"> </label >
+            </div>
+            <div class="col-7">
+                <input asp-for="Name" class="form-control"/>
+            </div>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <br />
+
+     
+        <br />
+
+        <div>
+            <input type="submit" class="btn btn-primary" value="save"/>
+            <a asp-action="Index" class="btn btn-success" style="width:auto">Back To List</a>
+        </div>
+
+
+    </div>
+
+    @section Scripts {
+      
+            <script src="~/lib/alertifyjs/alertify.min.js"></script>
+     
+        <script type="text/javascript">
+            $(function(){
+                var save= 'TempData["save"]'
+                if(save!=null){
+                    alertyfy.success(save);
+                }
+
+            })
+        </script>
+    }
+          @*  //$(document).ready(function () {
+            //    $('.custom-file-input').on("change", function () {
+            //        var filename = $(this).val().split("\\").pop();
+            //        $(this).next('.custom-file-label').html(filename);
+
+                    //var fileLabel = $(this).next('.custom-file-label');
+                    //var files = $ (this)[0].files;
+                    //if(file.length>1){
+                    //    fileLabel.html(files.length + 'files selected');
+                    //}
+                    //else if (files.length==1){
+                    //    fileLabel.html(files[0].name);
+            //        //}
+            //    });
+            //});*@
+        
+
+
+    
+</form>

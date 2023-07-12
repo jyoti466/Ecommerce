@@ -1,0 +1,104 @@
+﻿@model Products
+
+@{
+    ViewBag.Title = "Edit Product";
+}
+<br />
+<br />
+<h2 class=" text-info">Edit Product </h2>
+<form enctype="multipart/form-data" method="post" asp-action="Edit">
+    <div class=" p-4 rounded border">
+        <div asp-validation-summary="All" class="text-bg-danger">
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Name"> </label>
+                    </div>
+                    <div class="col-8">
+                        <input type="hidden" asp-for="id"/>
+                        <input asp-for="Name" class="form-control" />
+                    </div>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Price"> </label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Price" class="form-control" />
+                    </div>
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Image"> </label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Image" class="form-control" type="file" />
+                    </div>
+                    <span asp-validation-for="Image" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="ProductColor"> </label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="ProductColor" class="form-control" />
+                    </div>
+                    <span asp-validation-for="ProductColor" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="ProductTypeid"> </label>
+                    </div>
+                    <div class="col-8">
+                        <select asp-for="ProductTypeid" asp-items="ViewBag.productTypeid" class="form-control">
+                        </select>
+                        @*<input asp-for="ProductTypeid" class="form-control" />*@
+                    </div>
+                    <span asp-validation-for="ProductTypeid" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="SpecialTagid"> </label>
+                    </div>
+                    <div class="col-8">
+                        <select asp-for="SpecialTagid" asp-items="ViewBag.Tagid" class="form-control">
+                        </select>
+
+                        @* <input asp-for="SpecialTagid" class="form-control" />*@
+                    </div>
+                    <span asp-validation-for="SpecialTagid" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="IsAvailable"> </label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="IsAvailable" class="" type="checkbox" />
+                    </div>
+                    <span asp-validation-for="IsAvailable" class="text-danger"></span>
+                </div>
+                <br />
+                <div>
+                    <input type="submit" class="btn btn-primary" value="update" />
+                    <a asp-action="Index" class="btn btn-success" style="width:auto">Back To List</a>
+                </div>
+            </div>
+            <div class="col-1"></div>
+            <div class="col-3">
+                <img src="~/@Model.Image" width="100%" style="border-radius:5px; 
+                                             border:1px solid #efefef" />
+            </div>
+        </div>
+       
+    </div>
+</form>

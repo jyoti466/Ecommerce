@@ -1,0 +1,130 @@
+﻿@model IEnumerable<Products>
+@{
+    ViewBag.Title = "Products";
+}
+
+<br />
+<br />
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info">Product List</h2>
+    </div>
+    <div class="col-6" style="text-align:right">
+        <a asp-action="create"
+           class="btn btn-info" style="width:auto ">
+            <i class="fa-solid fa-plus"></i>&nbsp;New Product
+        </a>
+    </div>
+</div>
+<form method="post">
+    <div class="row">
+        <div class="col-3">
+            <input type="number" class="form-control" name="LowAmount"/>
+        </div>
+        <div class="col-3">
+            <input type="number" class="form-control" name="LargAmount" />
+        </div>
+        <div class="col-3">
+            <input type="submit" value="Search" class="btn btn-success" />
+        </div>
+        <div class="col-3"></div>
+    </div>
+</form>
+<br />
+<div>
+    <table class="table table-striped border" id="myTable">
+        <thead>
+ <tr class="table-info">
+            <th>
+                @Html.DisplayNameFor(expression:c=>c.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(expression:c=>c.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(expression:c=>c.ProductColor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(expression:c=>c.IsAvailable)
+            </th>
+            <th>
+                @Html.DisplayNameFor(expression:c=>c.ProductTypeid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(expression:c=>c.SpecialTagid)
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.Price
+                    </td>
+                    <td>
+                        @item.ProductColor
+                    </td>
+                    <td>
+                        @item.IsAvailable
+                    </td>
+                    <td>
+                        @item.ProductType.Name
+                    </td>
+                    <td>
+                        @item.SpecialTag.Name
+                    </td>
+                    <td>
+                        <partial name="ProductButton" model="@item.id" />
+                    </td>
+                </tr>
+            }
+        </tbody>
+       
+       
+    </table>
+
+</div>
+@section Scripts {
+
+    <script src="~/lib/alertifyjs/alertify.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function()
+        {
+            $('#myTable').DataTable({
+                dom: 'Bfrtip',
+                buttons:[
+                'copy' , 'csv' , 'excel' , 'pdf' , 'print'
+                ]
+            });
+        });
+
+
+        $(function () {
+            var save = '@TempData["save"]'
+            if (save != null) {
+                alertify.success(save);
+            }
+
+            var edit = '@TempData["edit"]'
+            if (edit != null) {
+                alertify.success(edit);
+            }
+
+            var del = '@TempData["del"]'
+            if (del != null) {
+                alertify.success(del);
+            }
+        })
+    </script>
+
+    }
+
+

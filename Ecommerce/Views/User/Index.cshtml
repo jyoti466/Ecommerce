@@ -1,0 +1,95 @@
+﻿@model IEnumerable<ApplicationUser>
+@{
+    ViewBag.Title = "User List";
+}
+<br />
+<br />
+
+
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info">User List</h2>
+    </div>
+    <div class="col-6" style="text-align:right">
+        <a asp-action="create"
+           class="btn btn-info" style="width:auto ">
+            <i class="fa-solid fa-plus"></i>&nbsp;New User
+        </a>
+    </div>
+</div>
+<br />
+<div>
+    <table class="table table-striped border">
+        <tr class="table-info">
+            <th>
+                Name
+            </th>
+            <th>UserName</th>
+            <th>Status</th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.FirstName @item.LastName
+                </td>
+                <td>
+                    @item.UserName
+                </td>
+                @if (item.LockoutEnd > DateTime.Now && item.LockoutEnd != null)
+                {
+                    <td> Inactive</td>
+                    <td></td>
+                    <td>
+                    <div class="btn-group">
+                        <a asp-action="Active" asp-controller="user" asp-route-id="@item.Id" class="btn btn-primary">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </a>
+                        <a asp-action="Delete" asp-controller="user" asp-route-id="@item.Id" class="btn btn-danger">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </div>
+                    </td>
+                   
+                }
+                else
+                {
+                    <td> Active</td>
+                    <td>
+                        <partial name="UserButton" model="@item.Id" />
+                    </td>
+                }
+
+            </tr>
+        }
+    </table>
+
+</div>
+
+
+@section Scripts {
+
+    <script src="~/lib/alertifyjs/alertify.min.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            var save = '@TempData["save"]'
+            if (save != null) {
+                alertify.success(save);
+            }
+
+            var edit = '@TempData["edit"]'
+            if (edit != null) {
+                alertify.success(edit);
+            }
+
+            var del = '@TempData["del"]'
+            if (del != null) {
+                alertify.success(del);
+            }
+        })
+    </script>
+    }
+

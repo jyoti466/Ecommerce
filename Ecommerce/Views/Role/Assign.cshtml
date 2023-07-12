@@ -1,0 +1,46 @@
+﻿@model RoleUserVm
+
+@{
+    ViewBag.Title = "Assign";
+}
+<br />
+<h2 class=" text-info">Assign Role</h2>
+<form enctype="multipart/form-data" method="post" asp-action="Assign">
+    <div class=" p-4 rounded border">
+        <div asp-validation-summary="All" class="text-bg-danger">
+        </div>
+        <h3>@ViewBag.msg </h3>
+     <br/>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="UserId"> </label>
+            </div>
+            <div class="col-5">
+                <select asp-for="UserId" asp-items="ViewBag.UserId" class="form-control">
+                </select>
+                @*<input asp-for="ProductTypeid" class="form-control" />*@
+            </div>
+            <span asp-validation-for="UserId" class="text-danger"></span>
+        </div>
+        <br />
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="RoleId"> </label>
+            </div>
+            <div class="col-5">
+                <select asp-for="RoleId" asp-items="ViewBag.RoleId" class="form-control">
+                </select>
+
+                @* <input asp-for="SpecialTagid" class="form-control" />*@
+            </div>
+            <span asp-validation-for="RoleId" class="text-danger"></span>
+        </div>
+        <br />
+
+       
+        <div>
+            <input type="submit" class="btn btn-primary" value="Assign" />
+            <a asp-action="Index" class="btn btn-success" style="width:auto">Back To List</a>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<SpecialTag>
+@{
+    ViewBag.Title = "SpecialTag list";
+}
+<br />
+<br />
+
+
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info">SpecialTag List</h2>
+    </div>
+    <div class="col-6" style="text-align:right">
+        <a asp-action="create"
+           class="btn btn-info" style="width:auto ">
+            <i class="fa-solid fa-plus"></i>&nbsp;New Tag Name
+        </a>
+    </div>
+</div>
+
+<br />
+
+    <table class="table table-striped border">
+        <tr class="table-info">
+            <th>
+                @Html.DisplayNameFor(expression:c=>c.Name)
+            </th>
+           @* <th>
+                @Html.DisplayNameFor(expression:c=>c.Catagory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(expression:c=>c.Price)
+            </th>*@
+            <th></th>
+            <th></th>
+
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+               @* <td> @item.Catagory</td>
+                <td> @item.Price</td>*@
+                <td>
+                    <partial name="Specialbutton" model="@item.id" />
+                </td>
+            </tr>
+        }
+    </table>
